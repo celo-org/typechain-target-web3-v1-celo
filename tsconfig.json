@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "sourceMap": false,
+    "lib": ["es2015"],
+    "target": "es2016",
+    "rootDir": "./lib",
+    "outDir": "./dist",
+    "declaration": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  }
+}
