@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
     "strict": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "types": ["node"],
-    "lib": ["es2015"],
+    "lib": ["dom", "es2015", "es2016"],
     "target": "es2016",
-    "rootDir": "./lib",
-    "outDir": "./dist",
+    "rootDir": "src",
+    "outDir": "lib",
     "declaration": true,
     "skipLibCheck": true,
-    "moduleResolution": "Node"
-  }
+    "jsx": "preserve",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "module": "commonjs"
+  },
+  "include": ["src"]
 }

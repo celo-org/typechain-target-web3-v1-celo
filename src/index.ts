@@ -1,7 +1,7 @@
 import { join, resolve } from 'path'
+import { codegen } from './generation'
 import { TContext, TFileDesc, TsGeneratorPlugin } from 'ts-generator'
 import { extractAbi, getFilename, parse } from 'typechain'
-import { codegen } from './generation'
 
 export interface IWeb3Cfg {
   outDir?: string
