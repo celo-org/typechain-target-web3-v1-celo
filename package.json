@@ -11,10 +11,13 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.15",
-    "web3": "1.2.4",
-    "typechain": "1.0.5"
+    "typechain": "1.0.5",
+    "web3": "1.2.4"
   },
   "scripts": {
     "build": "tsc -b ."
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.149"
   }
 }

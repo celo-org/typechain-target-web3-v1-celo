@@ -41,33 +41,5 @@ export default class Web3V1Celo extends TsGeneratorPlugin {
 
   afterRun(): TFileDesc[] {
     return []
-    //       {
-    //         path: join(this.outDirAbs, 'types.d.ts'),
-    //         contents: `
-    //   import { EventEmitter } from 'events'
-    //   import { EventLog } from 'web3-core'
-    //   import { Callback } from 'web3-core-helpers'
-
-    //   interface EventOptions {
-    //     filter?: object
-    //     fromBlock?: BlockType
-    //     topics?: string[]
-    //   }
-
-    //   export interface ContractEventLog<T> extends EventLog {
-    //     returnValues: T
-    //   }
-    //   export interface ContractEventEmitter<T> extends EventEmitter {
-    //     on(event: 'connected', listener: (subscriptionId: string) => void): this
-    //     on(event: 'data' | 'changed', listener: (event: ContractEventLog<T>) => void): this
-    //     on(event: 'error', listener: (error: Error) => void): this
-    //   }
-    //   export type ContractEvent<T> = (
-    //     options?: EventOptions,
-    //     cb?: Callback<ContractEventLog<T>>,
-    //   ) => ContractEventEmitter<T>
-    // `,
-    //       },
-    //     ]
   }
 }

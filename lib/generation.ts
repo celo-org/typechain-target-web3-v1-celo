@@ -44,7 +44,6 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   ) => ContractEventEmitter<T>
   
   export interface ${contract.name} extends Contract {
-    constructor(jsonInterface: any[], address?: string, options?: ContractOptions)
     clone(): ${contract.name}
     methods: {
       ${codegenForFunctions(contract.functions)}
@@ -61,7 +60,7 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
 
   export function new${contract.name}(web3: Web3, address: string): ${contract.name} {
     return new web3.eth.Contract(ABI, address) as any
-  },
+  }
   `
 
   return template
