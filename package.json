@@ -1,23 +1,26 @@
 {
-  "name": "typechain-target-web3-v1-celo",
+  "name": "@celo/typechain-target-web3-v1-celo",
   "description": "TypeChain target with Web3 1.2.4 for Celo support",
+  "version": "0.0.1",
+  "author": "Celo",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/celo-org/typechain-target-web3-v1-celo",
+  "repository": "https://github.com/celo-org/typechain-target-web3-v1-celo",
   "keywords": [
     "ethereum",
     "typescript",
     "bindings",
     "web3"
   ],
-  "version": "0.0.1",
-  "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.15",
     "typechain": "1.0.5",
     "web3": "1.2.4"
   },
-  "scripts": {
-    "build": "tsc -b ."
-  },
   "devDependencies": {
     "@types/lodash": "^4.14.149"
+  },
+  "scripts": {
+    "build": "tsc -b ."
   }
 }

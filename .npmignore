@@ -1,0 +1,14 @@
+/coverage/
+/node_modules/
+/lib/
+/tmp/
+/.tmp/
+
+/tslint.json
+/tsconfig.*
+/jest.config.*
+*.tgz
+
+/lib
+
+/dist/**/*.test.*
