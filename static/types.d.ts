@@ -17,6 +17,8 @@ export interface ContractEventEmitter<T> extends EventEmitter {
   on(event: 'error', listener: (error: Error) => void): this
 }
 
+export type Callback<T> = (error: Error | null, result?: T) => void
+
 export type ContractEvent<T> = (
   options?: EventOptions,
   cb?: Callback<ContractEventLog<T>>
