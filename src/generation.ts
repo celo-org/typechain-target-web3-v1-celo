@@ -17,32 +17,11 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   import { EventEmitter } from 'events'
   import Web3 from 'web3'
   import { EventLog } from 'web3-core'
-  import { Callback } from 'web3-core-helpers'
-  import { BlockType, TransactionObject } from 'web3-eth'
   import { Contract } from 'web3-eth-contract'
   import { AbiItem } from 'web3-utils'
-  
-  interface EventOptions {
-    filter?: object
-    fromBlock?: BlockType
-    topics?: string[]
-  }
-  
-  interface ContractEventLog<T> extends EventLog {
-    returnValues: T
-  }
-  
-  interface ContractEventEmitter<T> extends EventEmitter {
-    on(event: 'connected', listener: (subscriptionId: string) => void): this
-    on(event: 'data' | 'changed', listener: (event: ContractEventLog<T>) => void): this
-    on(event: 'error', listener: (error: Error) => void): this
-  }
-  
-  type ContractEvent<T> = (
-    options?: EventOptions,
-    cb?: Callback<ContractEventLog<T>>
-  ) => ContractEventEmitter<T>
-  
+  import { ContractEvent, EventOptions } from './types'
+  import { Callback, CeloTxObject } from '@celo/sdk-types/commons'
+
   export interface ${contract.name} extends Contract {
     clone(): ${contract.name}
     methods: {
@@ -75,7 +54,7 @@ function codegenForFunctions(fns: Dictionary<FunctionDeclaration[]>): string {
 
 function generateFunction(fn: FunctionDeclaration): string {
   return `
-  ${fn.name}(${generateInputTypes(fn.inputs)}): TransactionObject<${generateOutputTypes(
+  ${fn.name}(${generateInputTypes(fn.inputs)}): CeloTxObject<${generateOutputTypes(
     fn.outputs
   )}>;
 `
@@ -110,7 +89,7 @@ function codegenForEvents(events: Dictionary<EventDeclaration[]>): string {
 }
 
 function generateEvent(event: EventDeclaration) {
-  return `${event.name}: ContractEvent<${generateOutputTypes(event.inputs)}>`
+  return `${event.name}: ContractEvent<${generateOutputTypes(event.inputs as AbiOutputParameter[])}>`
 }
 
 function generateInputType(evmType: EvmType): string {
