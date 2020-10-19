@@ -14,13 +14,10 @@ import {
 
 export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   const template = `
+  import { AbiItem, Callback, CeloTxObject, Contract, EventLog } from '@celo/connect'
   import { EventEmitter } from 'events'
   import Web3 from 'web3'
-  import { EventLog } from 'web3-core'
-  import { Contract } from 'web3-eth-contract'
-  import { AbiItem } from 'web3-utils'
   import { ContractEvent, EventOptions } from './types'
-  import { Callback, CeloTxObject } from '@celo/sdk-types/commons'
 
   export interface ${contract.name} extends Contract {
     clone(): ${contract.name}
@@ -54,9 +51,7 @@ function codegenForFunctions(fns: Dictionary<FunctionDeclaration[]>): string {
 
 function generateFunction(fn: FunctionDeclaration): string {
   return `
-  ${fn.name}(${generateInputTypes(fn.inputs)}): CeloTxObject<${generateOutputTypes(
-    fn.outputs
-  )}>;
+  ${fn.name}(${generateInputTypes(fn.inputs)}): CeloTxObject<${generateOutputTypes(fn.outputs)}>;
 `
 }
 function generateInputTypes(inputs: AbiParameter[]): string {
@@ -89,7 +84,9 @@ function codegenForEvents(events: Dictionary<EventDeclaration[]>): string {
 }
 
 function generateEvent(event: EventDeclaration) {
-  return `${event.name}: ContractEvent<${generateOutputTypes(event.inputs as AbiOutputParameter[])}>`
+  return `${event.name}: ContractEvent<${generateOutputTypes(
+    event.inputs as AbiOutputParameter[]
+  )}>`
 }
 
 function generateInputType(evmType: EvmType): string {

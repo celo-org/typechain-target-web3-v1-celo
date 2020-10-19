@@ -1,5 +1,5 @@
+import { BlockNumber, EventLog } from '@celo/connect'
 import { EventEmitter } from 'events'
-import { BlockNumber, EventLog } from 'web3-core'
 
 export interface EventOptions {
   filter?: object
