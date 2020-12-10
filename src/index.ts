@@ -1,7 +1,8 @@
+import { readFileSync } from 'fs'
 import { join, resolve } from 'path'
-import { codegen } from './generation'
 import { TContext, TFileDesc, TsGeneratorPlugin } from 'ts-generator'
 import { extractAbi, getFilename, parse } from 'typechain'
+import { codegen } from './generation'
 
 export interface IWeb3Cfg {
   outDir?: string
@@ -40,6 +41,11 @@ export default class Web3V1Celo extends TsGeneratorPlugin {
   }
 
   afterRun(): TFileDesc[] {
-    return []
+    return [
+      {
+        path: join(this.outDirAbs, 'types.ts'),
+        contents: readFileSync(join(__dirname, '../static/types.ts'), 'utf-8'),
+      },
+    ]
   }
 }
