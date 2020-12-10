@@ -43,8 +43,8 @@ export default class Web3V1Celo extends TsGeneratorPlugin {
   afterRun(): TFileDesc[] {
     return [
       {
-        path: join(this.outDirAbs, 'types.d.ts'),
-        contents: readFileSync(join(__dirname, '../static/types.d.ts'), 'utf-8'),
+        path: join(this.outDirAbs, 'types.ts'),
+        contents: readFileSync(join(__dirname, '../static/types.ts'), 'utf-8'),
       },
     ]
   }
