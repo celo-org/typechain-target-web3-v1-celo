@@ -17,7 +17,7 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   import { AbiItem, Callback, CeloTxObject, Contract, EventLog } from '@celo/connect'
   import { EventEmitter } from 'events'
   import Web3 from 'web3'
-  import { ContractEvent, EventOptions } from './types'
+  import {${ contract.events.length ? 'ContractEvent,' : '' } EventOptions } from './types'
 
   export interface ${contract.name} extends Contract {
     clone(): ${contract.name}
