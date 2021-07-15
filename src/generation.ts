@@ -32,7 +32,7 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
       ) => EventEmitter
     }
   }
-  export const ABI: AbiItem[] = ${JSON.stringify(abi)}
+  export const ${contract.name}_ABI: AbiItem[] = ${JSON.stringify(abi)}
 
   export function new${contract.name}(web3: Web3, address: string): ${contract.name} {
     return new web3.eth.Contract(ABI, address) as any
