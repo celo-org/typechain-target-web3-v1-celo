@@ -15,7 +15,7 @@
     "web3"
   ],
   "dependencies": {
-    "lodash": "~4.17.19",
+    "lodash": "~4.17.21",
     "typechain": "2.0.0"
   },
   "devDependencies": {
