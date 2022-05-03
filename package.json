@@ -1,7 +1,7 @@
 {
   "name": "@celo/typechain-target-web3-v1-celo",
   "description": "TypeChain target with web3 + celo/connect for Celo support",
-  "version": "0.2.1-dev",
+  "version": "0.3.0-dev",
   "author": "Celo",
   "license": "Apache-2.0",
   "main": "./lib/index.js",
