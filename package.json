@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "lodash": "~4.17.20",
-    "typechain": "2.0.0"
+    "typechain": "^2.0.1"
   },
   "devDependencies": {
     "@types/lodash": "~4.14.158",
