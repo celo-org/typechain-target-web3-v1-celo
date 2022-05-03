@@ -16,7 +16,6 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   const template = `
   import { AbiItem, Callback, CeloTxObject, Contract, EventLog } from '@celo/connect'
   import { EventEmitter } from 'events'
-  import Web3 from 'web3'
   import {${ values(contract.events).length ? 'ContractEvent,' : '' } EventOptions } from './types'
 
   export interface ${contract.name} extends Contract {
@@ -34,8 +33,10 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   }
   export const ABI: AbiItem[] = ${JSON.stringify(abi)}
 
-  export function new${contract.name}(web3: Web3, address: string): ${contract.name} {
-    return new web3.eth.Contract(ABI, address) as any
+  type NewContract = (abi: AbiItem[], address: string) => Contract
+
+  export function new${contract.name}(newContract: NewContract, address: string): ${contract.name} {
+    return newContract(ABI, address) as ${contract.name}
   }
   `
 

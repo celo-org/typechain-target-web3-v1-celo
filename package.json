@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/lodash": "~4.14.158",
-    "@celo/connect": "1.0.2"
+    "@celo/connect": "^2.0.0"
   },
   "scripts": {
     "build": "tsc -b ."
