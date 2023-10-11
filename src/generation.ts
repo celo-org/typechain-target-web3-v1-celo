@@ -1,4 +1,3 @@
-import { values } from 'lodash'
 import { Dictionary } from 'ts-essentials'
 import {
   AbiOutputParameter,
@@ -17,7 +16,7 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
   import { AbiItem, Callback, CeloTxObject, Contract, EventLog } from '@celo/connect'
   import { EventEmitter } from 'events'
   import Web3 from 'web3'
-  import {${ values(contract.events).length ? 'ContractEvent,' : '' } EventOptions } from './types'
+  import {${ Object.keys(contract.events).length ? 'ContractEvent,' : '' } EventOptions } from './types'
 
   export interface ${contract.name} extends Contract {
     clone(): ${contract.name}
@@ -43,7 +42,7 @@ export function codegen(contract: Contract, abi: RawAbiDefinition[]) {
 }
 
 function codegenForFunctions(fns: Dictionary<FunctionDeclaration[]>): string {
-  return values(fns)
+  return Object.values(fns)
     .map((v) => v[0])
     .map(generateFunction)
     .join('\n')
@@ -77,7 +76,7 @@ function generateOutputTypes(outputs: AbiOutputParameter[]): string {
 }
 
 function codegenForEvents(events: Dictionary<EventDeclaration[]>): string {
-  return values(events)
+  return Object.values(events)
     .map((e) => e[0])
     .map(generateEvent)
     .join('\n')
