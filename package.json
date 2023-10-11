@@ -1,7 +1,7 @@
 {
   "name": "@celo/typechain-target-web3-v1-celo",
   "description": "TypeChain target with web3 + celo/connect for Celo support",
-  "version": "0.2.1-dev",
+  "version": "1.0.0-beta.1",
   "author": "Celo",
   "license": "Apache-2.0",
   "main": "./lib/index.js",
@@ -15,14 +15,14 @@
     "web3"
   ],
   "dependencies": {
-    "lodash": "~4.17.20",
-    "typechain": "2.0.0"
+    "typechain": "^8.3.1"
   },
   "devDependencies": {
-    "@types/lodash": "~4.14.158",
-    "@celo/connect": "1.0.2"
+    "@celo/connect": "^5.0.0",
+    "typescript": "^4.6.4"
   },
   "scripts": {
-    "build": "tsc -b ."
+    "build": "tsc -b .",
+    "release": "npm run build && npm publish"
   }
 }
